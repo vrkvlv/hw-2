@@ -196,7 +196,8 @@ def main():
         print(f"{BOLD}{GREEN}=== AUTO-FORMATTING PROJECT ==={RESET}")
 
         # 1. Format Python code
-        run_command("Ruff Format", [sys.executable, "-m", "ruff", "format", "."])
+        run_command("Ruff Format", [sys.executable,
+                    "-m", "ruff", "format", "."])
 
         # 2. Auto-fix safe PEP-8 and Django lint rules
         run_command(
