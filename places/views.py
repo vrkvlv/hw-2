@@ -22,7 +22,6 @@ BASE_PLACES = [
 
 
 def get_all_places(request):
-    """Базові місця + місця з сесії, кожному додається id (його індекс)."""
     custom_places = request.session.get("custom_places", [])
     all_places = []
     for index, place in enumerate(BASE_PLACES + custom_places):
@@ -31,7 +30,7 @@ def get_all_places(request):
 
 
 def pick_random_place(places):
-    """Випадкове місце: чим вищий рейтинг, тим більший шанс."""
+    
     if not places:
         return None
     weights = [place.get("rating", 1) for place in places]
