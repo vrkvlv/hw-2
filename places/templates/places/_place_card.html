@@ -1,0 +1,19 @@
+<article class="place">
+  <h2 class="place__name">
+    <a href="{% url 'place_detail' place.id %}">{{ place.name }}</a>
+  </h2>
+  <p class="place__meta">{{ place.district|default:"район не вказано" }}</p>
+  {% if place.rating %}
+    <p class="place__rating" aria-label="Рейтинг {{ place.rating }} з 5">
+      {% for i in "12345" %}<span class="star{% if forloop.counter <= place.rating %} star--on{% endif %}" aria-hidden="true">★</span>{% endfor %}
+    </p>
+  {% endif %}
+  {% if place.note %}
+    <p class="place__note">{{ place.note|truncatewords:8 }}</p>
+  {% endif %}
+  {% if place.is_custom %}
+    <span class="place__tag place__tag--mine">моє</span>
+  {% else %}
+    <span class="place__tag">редакція</span>
+  {% endif %}
+</article>
